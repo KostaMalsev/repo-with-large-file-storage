@@ -1,7 +1,12 @@
 async function get()
 {
   const resp = await fetch("LargeFile.zip");
-  console.log(await resp.arrayBuffer());
+
+  const blob = await resp.blob();
+
+  const file = window.URL.createObjectURL(blob);
+  window.location.assign(file);
+  
 }
 
 get();
